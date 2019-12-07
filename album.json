@@ -1,0 +1,10 @@
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c2f"},"album_id":"21","album_name":"the memory","album_genre":"rock","artist_id":"16","no_of_tracks":"4","track_ids":["155","341","312","231"]}
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c30"},"album_id":"22","album_name":"the road","album_genre":"hip-hop","artist_id":"20","no_of_tracks":"3","track_ids":["145","321","512"]}
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c31"},"album_id":"23","album_name":"the trip","album_genre":"dance","artist_id":"17","no_of_tracks":"2","track_ids":["158","141"]}
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c32"},"album_id":"24","album_name":"the river","album_genre":"EDM","artist_id":"20","no_of_tracks":"4","track_ids":["55","41","12","34"]}
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c33"},"album_id":"25","album_name":"addiction","album_genre":"rock","artist_id":"13","no_of_tracks":"3","track_ids":["234","543","31"]}
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c34"},"album_id":"26","album_name":"lovely","album_genre":"pop","artist_id":"15","no_of_tracks":"2","track_ids":["122","143"]}
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c35"},"album_id":"27","album_name":"the sickness","album_genre":"oldstyle","artist_id":"11","no_of_tracks":"2","track_ids":["189","198"]}
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c36"},"album_id":"28","album_name":"rapid","album_genre":"rock","artist_id":"18","no_of_tracks":"3","track_ids":["55","44","33"]}
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c37"},"album_id":"29","album_name":"happier","album_genre":"dance","artist_id":"23","no_of_tracks":"4","track_ids":["157","341","32","423"]}
+{"_id":{"$oid":"5d8ee6fffe1900c900c43c38"},"album_id":"30","album_name":"we will rock","album_genre":"rock","artist_id":"14","no_of_tracks":"2","track_ids":["166","177"]}
