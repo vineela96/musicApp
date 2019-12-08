@@ -1,0 +1,458 @@
+
+
+// Question 1 Connect to mongoDB database
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+
+app.get('/musicApp', (req,res)=> {
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "mongodb://localhost:27017/";
+
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var dbo = db.db("musicApp");
+	  dbo.listCollections().toArray(function(err, result) {
+		if (err) throw err;
+		//console.log(result);
+		res.send(result);
+		db.close();
+ 
+		}); 
+	});
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+*/
+//***************************************************************************
+// Question 2 
+//GET services which will read data 
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.get('/music/albums', (req,res)=> {
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "mongodb://localhost:27017/";
+
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var dbo = db.db("music");
+	  dbo.collection("albums").find({}, {}).toArray(function(err, result) {
+		if (err) throw err;
+		console.log(result);
+		res.send(result);
+		db.close();
+	  });
+	}); 
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));*/
+------------
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.get('/music/albums', (req,res)=> {
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "mongodb://localhost:27017/";
+
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var dbo = db.db("music");
+	  dbo.collection("tracks").find({}, {}).toArray(function(err, result) {
+		if (err) throw err;
+		console.log(result);
+		res.send(result);
+		db.close();
+	  });
+	}); 
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));*/
+------------
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.get('/music/albums', (req,res)=> {
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "mongodb://localhost:27017/";
+
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var dbo = db.db("music");
+	  dbo.collection("artists").find({}, {}).toArray(function(err, result) {
+		if (err) throw err;
+		console.log(result);
+		res.send(result);
+		db.close();
+	  });
+	}); 
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));*/
+-----------
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.get('/music/albums', (req,res)=> {
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "mongodb://localhost:27017/";
+
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var dbo = db.db("music");
+	  dbo.collection("albums").find({}, {projection:{_id:0,album_id: 1, album_name:1}).toArray(function(err, result) {
+		if (err) throw err;
+		console.log(result);
+		res.send(result);
+		db.close();
+	  });
+	}); 
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+*/
+
+//***************************************************************************
+
+// Question 3 
+//GET services with parameters 
+ 
+
+//passing album genre and getting documents
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.get('/music/albums/:album_genre', (req,res)=> {
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "mongodb://localhost:27017/";
+
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var dbo = db.db("musicApp");
+	  dbo.collection("albums").find({}).toArray( function(err, result) {
+      if (err) throw err;
+      console.log(result);    
+	  const albums1=result;
+	  const genre = albums1.find( c=> c.album_genre === (req.params.album_genre));
+	if(!genre) res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;"> Not Found!! </h2>');
+	res.send(genre);
+	  });
+	}); 
+});
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+*/
+
+//sending album name as parameter
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.get('/music/albums/:album_name', (req,res)=> {
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "mongodb://localhost:27017/";
+
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var dbo = db.db("musicApp");
+	  dbo.collection("albums").find({}).toArray( function(err, result) {
+      if (err) throw err;
+      console.log(result);    
+	  const albums1=result;
+	  const album_info = albums1.find( c=> c.album_name === (req.params.album_name));
+	if(!album_info) res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;"> Not Found!! </h2>');
+	res.send(album_info);
+	  });
+	}); 
+});
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+*/
+
+//***************************************************************************
+//Question 4
+//PUT Service to update 
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.put('/',(req,res)=>{
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("music");
+  var myquery = { album_name: "the trip" };
+  var newvalues = { $set: {album_name: "the trip got updated"} };
+  dbo.collection("albums").updateOne(myquery, newvalues, function(err, result) {
+    if (err) throw err;
+    console.log("1 document updated");
+res.send(result);
+    db.close();
+  });
+});
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+*/
+
+//Updating tracks
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.put('/',(req,res)=>{
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("music");
+  //var myquery = { track_name: "chandeliar" };
+  var myquery = { track_name: "cheap thrills" };
+  var newvalues = { $set: {album_name: "chandeliar"} };
+  dbo.collection("tracks").updateOne(myquery, newvalues, function(err, result) {
+    if (err) throw err;
+    console.log("1 document updated");
+	res.send(result);
+    db.close();
+  });
+});
+});
+-----------------
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.put('/',(req,res)=>{
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("music");
+  var myquery = { artist_name: "the trip" };
+  var newvalues = { $set: {artist_name: "Ellie Goulding"} };
+  dbo.collection("artists").updateOne(myquery, newvalues, function(err, result) {
+    if (err) throw err;
+    console.log("1 document updated");
+res.send(result);
+    db.close();
+  });
+});
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+-----------------
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+*/
+
+//***************************************************************************
+//Question 5
+//POST Service to insert documents 
+//inserting 1 document in albums
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.post('/',(req,res)=>{
+var MongoClient = require('mongodb').MongoClient;
+    var url = "mongodb://localhost:27017/";
+MongoClient.connect(url, function(err, db) {
+ if (err) throw err;
+ var dbo = db.db("music");
+ var myobj = {
+	album_id: "25",
+	album_name: "addiction",
+	album_genre: "rock",
+	artist_id: "13",
+	no_of_tracks: "3",
+	track_ids: ["234","543","31"]
+	};
+ dbo.collection("albums").insertOne(myobj, function(err, res) {
+if (err) throw err;
+console.log("1 document inserted into albums collection");
+   
+ });
+});
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+*/
+
+//insert into tracks collection
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.post('/',(req,res)=>{
+var MongoClient = require('mongodb').MongoClient;
+    var url = "mongodb://localhost:27017/";
+MongoClient.connect(url, function(err, db) {
+ if (err) throw err;
+ var dbo = db.db("music");
+ var myobj = [{track_id: "159",
+	track_name: "I'm a Mess",
+	genre: "hip-hop",
+	artist_id: "11",
+	track_length: "3:59"},
+	{track_id: "160",
+	track_name: "Say my Name",
+	genre: "Pop",
+	artist_id: "11",
+	track_length: "3:59"}];
+ dbo.collection("tracks").insertMany(myobj, function(err, res) {
+if (err) throw err;
+console.log("2 documents inserted into tracks collection");
+   db.close();
+ });
+});
+});
+----------
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.post('/',(req,res)=>{
+var MongoClient = require('mongodb').MongoClient;
+    var url = "mongodb://localhost:27017/";
+MongoClient.connect(url, function(err, db) {
+ if (err) throw err;
+ var dbo = db.db("music");
+ var myobj = {
+	artist_id: "20",
+	artist_name: "Ellie Goulding",
+	artist_desc: "Singer"
+	}
+ dbo.collection("artists").insertOne(myobj, function(err, res) {
+if (err) throw err;
+console.log("1 document inserted into tracks collection");
+   db.close();
+ });
+});
+});
+----------
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+*/
+
+//***************************************************************************
+//question 6
+//Delete Service to delete documents 
+/*
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.delete('/',(req,res)=>{
+var MongoClient = require('mongodb').MongoClient;
+    var url = "mongodb://localhost:27017/";
+   MongoClient.connect(url, function(err, db) {
+   if (err) throw err;
+   var dbo = db.db("music");
+   var myquery = { album_id: "22" };
+   dbo.collection("albums").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted from albums collection");
+    db.close();
+  });
+});
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+*/
+
+//Delete service to delete document from tracks 
+
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.delete('/',(req,res)=>{
+var MongoClient = require('mongodb').MongoClient;
+    var url = "mongodb://localhost:27017/";
+   MongoClient.connect(url, function(err, db) {
+   if (err) throw err;
+   var dbo = db.db("music");
+   var myquery = { track_name: /^R/ };//delete track names staring with R
+   dbo.collection("tracks").deleteMany(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log(obj.result.n + " document(s) deleted");
+    db.close();
+  });
+});
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+------------
+
+const express = require('express');
+const app = express();
+const mongo = require('mongodb');
+app.use(express.json());
+
+app.delete('/',(req,res)=>{
+var MongoClient = require('mongodb').MongoClient;
+    var url = "mongodb://localhost:27017/";
+   MongoClient.connect(url, function(err, db) {
+   if (err) throw err;
+   var dbo = db.db("music");
+   var myquery = { artist_name: /^E/ };//delete track names staring with R
+   dbo.collection("artists").deleteMany(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log(obj.result.n + " document(s) deleted");
+    db.close();
+  });
+});
+});
+
+const port = process.env.PORT || 8081;
+app.listen(port, () => console.log(`Listening on port ${port}..`));
+
+
+
+
+
+
+
+
